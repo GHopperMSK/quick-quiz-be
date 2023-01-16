@@ -1,0 +1,26 @@
+{
+    "name": "quick-quiz-be",
+    "version": "0.0.0",
+    "description": "Highly customizable quiz tool for websites (backend)",
+    "private": true,
+    "scripts": {
+        "start:dev": "nodemon ./bin/www"
+    },
+    "keywords": [
+        "quiz",
+        "questionnaire",
+        "survey"
+    ],
+    "author": "Poriadin Nikolai",
+    "license": "MIT",
+    "dependencies": {
+        "cookie-parser": "~1.4.4",
+        "debug": "~2.6.9",
+        "deepmerge": "^4.2.2",
+        "express": "~4.16.1",
+        "http-errors": "~1.6.3",
+        "morgan": "~1.9.1",
+        "pg": "^8.8.0",
+        "pug": "2.0.0-beta11"
+    }
+}
