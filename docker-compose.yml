@@ -6,7 +6,7 @@ services:
             target: dev
         volumes:
             - .:/src
-        command: npm run start:dev
+        command: npm run dev
         depends_on:
             - db
         ports:

@@ -11,6 +11,7 @@ exports.findOne = (req, res) => {
     let quizUuid = req.query.quiz_uuid;
     if (!quizUuid) {
         res.status(400).send("quiz_uuid parameter is required");
+        return
     }
     let lang = req.query.lang || "en";
 
