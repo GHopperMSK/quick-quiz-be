@@ -3,13 +3,13 @@ const db = require('../db');
 
 export class Slide {
     id: number;
-    quizUuid: string;
+    type: string;
     lang: string;
     config: string;
 
-    constructor(id: number, quizUuid: string, lang: string, config: string) {
+    constructor(id: number, type: string, lang: string, config: string) {
         this.id = id;
-        this.quizUuid = quizUuid;
+        this.type = type
         this.lang = lang;
         this.config = config;
     }
@@ -32,12 +32,13 @@ export class Slide {
                 if (err) {
                     reject(err);
                 }
+
                 var slides: any[] = [];
                 res.rows.forEach((slide: any) => {
                     const jsonConfig = slide.config 
                         ? merge(slide.default_config, slide.config) 
                         : slide.default_config;
-                    slides.push(new Slide(slide.id, slide.quiz_uuid, slide.lang, jsonConfig));
+                    slides.push(new Slide(jsonConfig.id, jsonConfig.type, slide.lang, jsonConfig.config));
                 });
     
                 resolve(slides);

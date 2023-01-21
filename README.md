@@ -12,3 +12,6 @@
 
 5. `make migrate_up`
 
+
+// curl -X POST http://localhost:3000/answer -H 'Content-Type: application/json' -d '{"quiz_uuid": "c2cd6a3f-9777-41b1-be4b-0a6d897f4512", "lang": "en", "slides":[{"a":"b"},{"foo":"bar"}]}'
+

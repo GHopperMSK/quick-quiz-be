@@ -20,10 +20,10 @@ CREATE TABLE IF NOT EXISTS website (
 	        REFERENCES "user"(id)
 );
 
-CREATE TABLE IF NOT EXISTS website_aliase (
+CREATE TABLE IF NOT EXISTS website_alias (
     id SERIAL PRIMARY KEY,
     website_uuid UUID,
-    aliase VARCHAR(255),
+    alias VARCHAR(255),
     CONSTRAINT fk_website
         FOREIGN KEY(website_uuid) 
 	        REFERENCES website(uuid)
@@ -50,15 +50,26 @@ CREATE TABLE IF NOT EXISTS slide (
     CONSTRAINT fk_slide
         FOREIGN KEY(parent_id) 
 	        REFERENCES "slide"(id),
-    CONSTRAINT fk_quiz
+    CONSTRAINT fk_slide_quiz
         FOREIGN KEY(quiz_uuid) 
 	        REFERENCES "quiz"(uuid)  
-)
+);
+
+CREATE TABLE IF NOT EXISTS raw_answer (
+    quiz_uuid UUID,
+    lang VARCHAR(2),
+    answer JSON NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    CONSTRAINT fk_raw_answer_quiz
+        FOREIGN KEY(quiz_uuid) 
+	        REFERENCES "quiz"(uuid)  
+);
 
 -- migrate:down
+DROP TABLE IF EXISTS raw_answer;
 DROP TABLE IF EXISTS slide;
 DROP TABLE IF EXISTS quiz;
-DROP TABLE IF EXISTS website_aliase;
+DROP TABLE IF EXISTS website_alias;
 DROP TABLE IF EXISTS website;
 DROP TABLE IF EXISTS "user";
 

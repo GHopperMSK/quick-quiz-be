@@ -9,6 +9,7 @@ var debug = require('debug')('quick-quiz-be:server');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var configRouter = require('./routes/config');
+var answerRouter = require('./routes/answer');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/config', configRouter);
+app.use('/answer', answerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req: any, res: any, next: any) {
