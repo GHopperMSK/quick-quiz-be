@@ -1,8 +1,8 @@
-const Slide = require('../models/slide.model.js')
-const Quiz = require('../models/quiz.model.js')
+import { Quiz } from "../models/quiz.model";
+import { Slide } from "../models/slide.model";
 
 /* config?quiz_uuid=<uuid>&lang=<lang> */
-exports.findOne = (req, res) => {
+exports.findOne = (req: any, res: any) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
@@ -16,14 +16,15 @@ exports.findOne = (req, res) => {
     let lang = req.query.lang || "en";
 
     Promise.all([Slide.findByQuizUuid(quizUuid, lang), Quiz.findByUuid(quizUuid)])
-        .then(function(result) {
+        .then(function(result: any) {
+            var slides: Slide[] = [];
             var config = {
                 "version": 1.0,
                 "init_slide": result[1].initSlideId,
-                "slides": []
+                "slides": slides
             }
 
-            result[0].forEach((slide) => {
+            result[0].forEach((slide: Slide) => {
                 config.slides.push(slide);
             })
 

@@ -7,7 +7,7 @@ const db = new Pool({
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
 })
-db.on('error', (err, client) => {
+db.on('error', (err: Error, client: any) => {
     console.error('idle client error', err.message, err.stack);
 });
 

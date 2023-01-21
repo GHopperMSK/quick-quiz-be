@@ -6,9 +6,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var debug = require('debug')('quick-quiz-be:server');
 
-var indexRouter = require('../routes/index');
-var usersRouter = require('../routes/users');
-var configRouter = require('../routes/config');
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var configRouter = require('./routes/config');
 
 var app = express();
 
