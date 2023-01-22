@@ -34,6 +34,7 @@
         "@types/express": "^4.17.15",
         "@types/fs-extra": "^9.0.13",
         "@types/node": "^16.18.11",
+        "@types/pg": "^8.6.6",
         "@types/shelljs": "^0.8.11",
         "fs-extra": "^10.1.0",
         "nodemon": "^2.0.20",
