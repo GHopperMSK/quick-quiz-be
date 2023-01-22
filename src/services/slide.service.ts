@@ -13,9 +13,10 @@ export class SlideService {
                             ? merge(s.defaultConfig, s.config) 
                             : s.defaultConfig;
                         const slide: Slide = {
-                            id: jsonConfig.id,
-                            lang: s.lang,
-                            config: jsonConfig.config,
+                            "id": s.id,
+                            "type": s.type,
+                            "lang": s.lang,
+                            "config": jsonConfig,
                         }
                         slides.push(slide);
                     });      

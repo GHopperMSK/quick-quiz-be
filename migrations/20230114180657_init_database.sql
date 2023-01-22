@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS slide (
     id SERIAL PRIMARY KEY,
     parent_id INTEGER DEFAULT NULL,
     quiz_uuid UUID,
+    type VARCHAR(3) NOT NULL,
     lang VARCHAR(2),
     config JSON NOT NULL,
     CONSTRAINT fk_slide

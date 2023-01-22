@@ -9,6 +9,7 @@ export class SlideRepository {
                 SELECT
                     s1.id,
                     s1.quiz_uuid,
+                    s1.type,
                     CASE WHEN s2.lang IS NULL THEN s1.lang ELSE s2.lang END AS lang,
                     s1.config AS default_config,
                     s2.config
@@ -25,10 +26,11 @@ export class SlideRepository {
                 var slides: UnlocalizedSlide[] = [];
                 res.rows.forEach((row: any) => {
                     const slide: UnlocalizedSlide = {
-                        id: row.id,
-                        lang: row.lang,
-                        config: row.config,
-                        defaultConfig: row.default_config,
+                        "id": row.id,
+                        "type": row.type,
+                        "lang": row.lang,
+                        "config": row.config,
+                        "defaultConfig": row.default_config,
                     }
                     slides.push(slide);
                 });

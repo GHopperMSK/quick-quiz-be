@@ -7,6 +7,7 @@ export interface Slide extends BaseSlide {
 }
 
 export interface BaseSlide {
+    type: string
     lang: string
     config: string
 }

@@ -27,7 +27,6 @@ export class QuizController {
                     "init_slide": quiz.initSlideId,
                     "slides": slides
                 }
-    
                 res.json(config)
             }).catch(function(err) {
                 res.status(500).send("Something wrong")
