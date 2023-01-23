@@ -1,10 +1,10 @@
 import { RawAnswer } from "../models/rawAnswer.model";
-import { RawAnswerRepository } from "../repositories/rawAnswer.repository";
+import rawAnswerRepository from "../repositories/rawAnswer.repository";
 
 export class RawAnswerService {
-    static create(rawAnswer: RawAnswer) {
+    create = (rawAnswer: RawAnswer): Promise<null> => {
         return new Promise(function(resolve, reject) {
-            RawAnswerRepository.create(rawAnswer)
+            rawAnswerRepository.create(rawAnswer)
                 .then(function() {        
                     resolve(null)
                 }).catch(function(err: Error) {

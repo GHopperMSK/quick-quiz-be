@@ -2,8 +2,8 @@ import { database } from '../common/database';
 import { Quiz } from '../models/quiz.model'
 
 export class QuizRepository {
-    static findByUuid(uuid: string) {
-        return new Promise(function(resolve, reject) {
+    findByUuid = (uuid: string): Promise<Quiz> => {
+        return new Promise((resolve, reject) => {
             database.query("SELECT * FROM public.quiz WHERE uuid = $1", [uuid], function(err: Error | null, res: any) {
                 if (err) {
                     reject(err);

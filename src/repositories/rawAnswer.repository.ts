@@ -1,8 +1,8 @@
 import { database } from '../common/database';
 import { RawAnswer } from "../models/rawAnswer.model";
 
-export class RawAnswerRepository {
-    static create(rawAnswer: RawAnswer) {
+class RawAnswerRepository {
+    create = (rawAnswer: RawAnswer): Promise<null> => {
         return new Promise(function(resolve, reject) {
             database.query(`INSERT INTO raw_answer(quiz_uuid, lang, answer) VALUES($1, $2, $3)`, [
                     rawAnswer.quizUuid, 
@@ -18,4 +18,6 @@ export class RawAnswerRepository {
         });
     }
 }
+
+export default new RawAnswerRepository
 

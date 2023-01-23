@@ -3,7 +3,7 @@ import { database } from '../common/database';
 import { UnlocalizedSlide } from '../models/slide.model'
 
 export class SlideRepository {
-    static findByQuizUuid(quizUuid: string, lang: string) {
+    findByQuizUuid = (quizUuid: string, lang: string): Promise<UnlocalizedSlide[]> => {
         return new Promise(function(resolve, reject) {
             const sqlQuery = `
                 SELECT
