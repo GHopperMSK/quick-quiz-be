@@ -41,11 +41,13 @@ CREATE TABLE IF NOT EXISTS quiz (
 	        REFERENCES "user"(id)
 );
 
+CREATE TYPE slide_type AS ENUM('INF', 'SLT', 'MLT', 'OPQ', 'RTE');
+
 CREATE TABLE IF NOT EXISTS slide (
     id SERIAL PRIMARY KEY,
     parent_id INTEGER DEFAULT NULL,
     quiz_uuid UUID,
-    type VARCHAR(3) NOT NULL,
+    type slide_type NOT NULL,
     lang VARCHAR(2),
     config JSON NOT NULL,
     CONSTRAINT fk_slide
@@ -62,13 +64,14 @@ CREATE TABLE IF NOT EXISTS raw_answer (
     answer JSON NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     CONSTRAINT fk_raw_answer_quiz
-        FOREIGN KEY(quiz_uuid) 
+        FOREIGN KEY(quiz_uuid)
 	        REFERENCES "quiz"(uuid)  
 );
 
 -- migrate:down
 DROP TABLE IF EXISTS raw_answer;
 DROP TABLE IF EXISTS slide;
+DROP TYPE IF EXISTS slide_type;
 DROP TABLE IF EXISTS quiz;
 DROP TABLE IF EXISTS website_alias;
 DROP TABLE IF EXISTS website;
