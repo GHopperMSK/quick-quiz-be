@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    div
+        form(action='/register', method='POST')
+            input(type='text', name='username', placeholder='Username', autofocus)
+            input(type='text', name='email', placeholder='Email')
+            input(type='password', name='password', placeholder='Password', required)
+            button(type='submit') Register
